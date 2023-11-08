@@ -106,7 +106,7 @@ public class Main extends Application {
 		String numtext = this.txtNumeros.getText();
 		numero = juego.validarEntrada(numtext);
 		norepetido = juego.validarRepetido(numero);
-		if (numero != 0 && norepetido) {
+		if (numero > 0  && norepetido) {
 			//JOptionPane.showMessageDialog(null, "Número correcto");
 			adivino = juego.adivinaste();
 			if (!adivino && this.numIntentos < 10) {
@@ -126,10 +126,10 @@ public class Main extends Application {
 			}
 		}
 		else {
-			System.out.println(numero);
+			//System.out.println("validación:"+numero);
 			if(numero == juego.ERRORDIGITOS)
 				JOptionPane.showMessageDialog(null, "Se requieren cuatro dígitos");
-			if(numero == juego.ENTRADAINVALIDA)
+			else if(numero == juego.ENTRADAINVALIDA)
 				JOptionPane.showMessageDialog(null, "Entrada inválida");
 			else if(!norepetido)
 				JOptionPane.showMessageDialog(null,"Hay Dígitos Repetidos");

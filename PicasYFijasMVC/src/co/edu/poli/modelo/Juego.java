@@ -21,9 +21,11 @@ public class Juego {
 		int numero;
 		double num;
 		int total = 0;
+		//System.out.println("Generando mágico");
 		while (total < 4) {
 			num = Math.random() * 10;
 			numero = (int) num;
+
 			if (digitos[numero] != -1) {
 				this.magico[total] = numero;
 				digitos[numero] = -1;
@@ -35,11 +37,13 @@ public class Juego {
 	}
 
 	public int validarEntrada(String txtNumeros) {
-		int numero = 0;
+		int numero = -1;
+		//System.out.println("texto: "+txtNumeros+"tamaño:"+txtNumeros.length());
 		if (txtNumeros.length() != 4) {
 			//JOptionPane.showMessageDialog(null, "Se requieren cuatro dígitos");
 			//txtNumeros.requestFocus();
 			numero = ERRORDIGITOS;//cuatro digitos
+			//System.out.println("error:"+numero);
 		} else {
 			try {
 				numero = Integer.parseInt(txtNumeros);
@@ -54,18 +58,17 @@ public class Juego {
 	}
 
 	public boolean validarRepetido(int numero) {
-		int [] adivina = new int[4];
 		int[] digitos = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 		int i = 0, num = numero, j = 3;
 		while (num > 0) {
-			adivina[j] = num % 10;
+			this.adivina[j] = num % 10;
 			//System.out.println(this.adivina[j]);
 			num = num / 10;
 			j--;
 		}
 		for (i = 0; i < 4; i++) {
-			if (digitos[adivina[i]] != -1)
-				digitos[adivina[i]] = -1;
+			if (digitos[this.adivina[i]] != -1)
+				digitos[this.adivina[i]] = -1;
 			else {
 				//JOptionPane.showMessageDialog(null,"Dígito Repetido");
 				//txtNumeros.requestFocus();
@@ -76,10 +79,11 @@ public class Juego {
 	}
 
 	public boolean adivinaste() {
-		boolean adivina = false;
+		boolean adivino = false;
 		int i,j;
 		this.picas = this.fijas = 0;
 		for(i = 0 ; i < 4 ; i++ ) {
+			//System.out.print("Adivina: "+this.adivina[i]);
 			if (this.adivina[i] == this.magico[i])
 				this.fijas++;
 		}
@@ -90,13 +94,13 @@ public class Juego {
 			}
 		}
 		if (this.fijas == 4)
-			adivina = true;
+			adivino = true;
 		this.txpicas = this.picas+"";
 		this.txfijas = this.fijas+"";
 		//txpicas.setText(txpicas);
 		//txfijas.setText(txfijas);
 		//System.out.println("Picas:"+this.picas+"-- Fijas:"+this.fijas);
-		return adivina;
+		return adivino;
 	}
 
 	public int[] getAdivina() {
