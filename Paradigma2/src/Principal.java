@@ -1,12 +1,16 @@
 import java.util.Scanner;
 
 public class Principal {
+	
+	private static Circulo circulo;
+	private static Cuadrado cuadrado;
+	private static Scanner entrada;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Circulo circulo = new Circulo(5);
-		Cuadrado cuadrado = new Cuadrado(5);
-		Scanner entrada = new Scanner(System.in);
+		circulo = new Circulo(5);
+		cuadrado = new Cuadrado(5);
+		entrada = new Scanner(System.in);
 		
 		System.out.println("Digite Area Circulo:");
 		circulo.setRadio(entrada.nextDouble());
@@ -23,6 +27,10 @@ public class Principal {
 		cuadrado.imprimirResultados();
 		
 		
+	}
+	
+	public Cuadrado hacerAlgo(Circulo c) {
+		return null;
 	}
 
 }

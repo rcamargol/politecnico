@@ -1,12 +1,14 @@
 
 public class Principal {
+	
+	 //Instanciar o materializar dos clases en objetos 
+	static Circulo circulo = new Circulo();
+	static Cuadrado cuadrado = new Cuadrado(10);
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		//Instanciar o materializar dos clases en objetos 
-		Circulo circulo = new Circulo();
-		Cuadrado cuadrado = new Cuadrado(10);
 		
 		circulo.setRadio(10);
 		//circulo.pedirRadio();

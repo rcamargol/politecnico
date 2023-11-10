@@ -8,6 +8,7 @@ public class Circulo {
 	private double areaCirculo;
 	private double periCirculo;
 	private Scanner entrada = new Scanner(System.in);
+	
 	//declaración de métodos
 	
 	public void pedirRadio() {
