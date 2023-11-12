@@ -151,6 +151,11 @@ public class Juego {
 		this.txfijas = txfijas;
 	}
 	
-	
+	public String getMagicoTxt() {
+		String valor = String.valueOf(
+				this.magico[0]*1000+this.magico[1]*100+this.magico[2]*10+this.magico[3]);
+		return valor;
+		
+	}
 	
 }

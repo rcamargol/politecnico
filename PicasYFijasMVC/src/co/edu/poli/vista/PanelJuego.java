@@ -28,9 +28,11 @@ public class PanelJuego {
 	private Juego juego;
 	
 	private String intentos;
-	private static int numIntentos;
+	private int numIntentos;
+	private final int MAX_INTENTOS = 10;
 	
-	public PanelJuego(Stage primaryStage, EventHandler e) {
+	public PanelJuego(Stage primaryStage) {
+		numIntentos = 1;
 		try {
 			BorderPane root = new BorderPane();
 			juego = new Juego();
@@ -88,11 +90,46 @@ public class PanelJuego {
 			primaryStage.setTitle("Picas y Fijas: El Juego");
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage());
 			//e.printStackTrace();
 		}
 	}
 	
-
+	public void btnOK_Click() {
+		int numero = 0;
+		boolean adivino = false, norepetido = false;
+		String numtext = this.txtNumeros.getText();
+		numero = juego.validarEntrada(numtext);
+		norepetido = juego.validarRepetido(numero);
+		if (numero > 0  && norepetido) {
+			//JOptionPane.showMessageDialog(null, "Número correcto");
+			adivino = juego.adivinaste();
+			if (!adivino && this.numIntentos < MAX_INTENTOS) {
+				txtPicas.setText(juego.getTxpicas());
+				txtFijas.setText(juego.getTxfijas());
+				this.numIntentos++;
+				intentos = "Numero Intentos: " + numIntentos;
+				lblNumIntentos.setText(intentos);
+				txtNumeros.setText(""); 
+			}
+			else {
+				if (adivino) {
+					JOptionPane.showMessageDialog(null, "¡GANASTE!");
+				}
+				else if (this.numIntentos == MAX_INTENTOS)
+					JOptionPane.showMessageDialog(null, "¡PERDISTE!, el número es: "+juego.getMagicoTxt());
+			}
+		}
+		else {
+			//System.out.println("validación:"+numero);
+			if(numero == juego.ERRORDIGITOS)
+				JOptionPane.showMessageDialog(null, "Se requieren cuatro dígitos");
+			else if(numero == juego.ENTRADAINVALIDA)
+				JOptionPane.showMessageDialog(null, "Entrada inválida");
+			else if(!norepetido)
+				JOptionPane.showMessageDialog(null,"Hay Dígitos Repetidos");
+			txtNumeros.requestFocus();
+		}
+	}
 }
