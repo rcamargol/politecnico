@@ -8,6 +8,8 @@ public class Juego {
 	private int fijas;
 	private String txpicas;
 	private String txfijas;
+	
+	public final int MAX_INTENTOS = 10;
 	public final int ERRORDIGITOS = -2;
 	public final int ENTRADAINVALIDA = -3;
 	

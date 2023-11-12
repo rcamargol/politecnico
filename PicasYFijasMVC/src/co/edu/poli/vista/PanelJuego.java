@@ -3,7 +3,6 @@ package co.edu.poli.vista;
 import javax.swing.JOptionPane;
 
 import co.edu.poli.modelo.Juego;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -29,10 +28,9 @@ public class PanelJuego {
 	
 	private String intentos;
 	private int numIntentos;
-	private final int MAX_INTENTOS = 10;
 	
 	public PanelJuego(Stage primaryStage) {
-		numIntentos = 1;
+		this.numIntentos = 1;
 		try {
 			BorderPane root = new BorderPane();
 			juego = new Juego();
@@ -105,19 +103,19 @@ public class PanelJuego {
 		if (numero > 0  && norepetido) {
 			//JOptionPane.showMessageDialog(null, "Número correcto");
 			adivino = juego.adivinaste();
-			if (!adivino && this.numIntentos < MAX_INTENTOS) {
-				txtPicas.setText(juego.getTxpicas());
-				txtFijas.setText(juego.getTxfijas());
+			if (!adivino && this.numIntentos < juego.MAX_INTENTOS) {
+				this.txtPicas.setText(juego.getTxpicas());
+				this.txtFijas.setText(juego.getTxfijas());
 				this.numIntentos++;
-				intentos = "Numero Intentos: " + numIntentos;
-				lblNumIntentos.setText(intentos);
-				txtNumeros.setText(""); 
+				this.intentos = "Numero Intentos: " + numIntentos;
+				this.lblNumIntentos.setText(this.intentos);
+				this.txtNumeros.setText(""); 
 			}
 			else {
 				if (adivino) {
 					JOptionPane.showMessageDialog(null, "¡GANASTE!");
 				}
-				else if (this.numIntentos == MAX_INTENTOS)
+				else if (this.numIntentos == juego.MAX_INTENTOS)
 					JOptionPane.showMessageDialog(null, "¡PERDISTE!, el número es: "+juego.getMagicoTxt());
 			}
 		}
