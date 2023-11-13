@@ -10,15 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
-
 public class Main extends Application implements EventHandler<ActionEvent> {
 
-	//private PanelJuego pj;
 	private Vista vista;
 	private Juego juego;
 	
 	public static void main(String[] args) {
-		//numIntentos = 1;
 		launch(args);
 	}
 
@@ -50,14 +47,13 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 		numero = juego.validarEntrada(numtext);
 		norepetido = juego.validarRepetido(numero);
 		if (numero > 0  && norepetido) {
-			//JOptionPane.showMessageDialog(null, "Número correcto");
 			adivino = juego.adivinaste();
 			if (!adivino && vista.getPj().getNumIntentos() < juego.MAX_INTENTOS) {
 				vista.getPj().getTxtPicas().setText(juego.getTxpicas());
 				vista.getPj().getTxtFijas().setText(juego.getTxfijas());
 				vista.getPj().setNumIntentos(vista.getPj().getNumIntentos()+1); 
-				vista.getPj().setIntentos("Numero Intentos: " + vista.getPj().getNumIntentos()); //this.intentos = "Numero Intentos: " + numIntentos;
-				vista.getPj().getLblNumIntentos().setText(vista.getPj().getIntentos()); //this.lblNumIntentos.setText(this.intentos);
+				vista.getPj().setIntentos("Numero Intentos: " + vista.getPj().getNumIntentos()); 
+				vista.getPj().getLblNumIntentos().setText(vista.getPj().getIntentos()); 
 				vista.getPj().getTxtNumeros().setText(""); 
 			}
 			else {
@@ -69,14 +65,13 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 			}
 		}
 		else {
-			//System.out.println("validación:"+numero);
 			if(numero == juego.ERRORDIGITOS)
 				JOptionPane.showMessageDialog(null, "Se requieren cuatro dígitos");
 			else if(numero == juego.ENTRADAINVALIDA)
 				JOptionPane.showMessageDialog(null, "Entrada inválida");
 			else if(!norepetido)
 				JOptionPane.showMessageDialog(null,"Hay Dígitos Repetidos");
-			vista.getPj().getTxtNumeros().requestFocus(); //txtNumeros.requestFocus();
+			vista.getPj().getTxtNumeros().requestFocus();
 		}
 	}
 	
