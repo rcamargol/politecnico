@@ -23,35 +23,26 @@ public class Juego {
 		int numero;
 		double num;
 		int total = 0;
-		//System.out.println("Generando mágico");
 		while (total < 4) {
 			num = Math.random() * 10;
 			numero = (int) num;
-
 			if (digitos[numero] != -1) {
 				this.magico[total] = numero;
 				digitos[numero] = -1;
 				total++;
 				System.out.print(numero+" ");
 			}
-			//System.out.println("magico:"+this.magico[total]);
 		}
 	}
 
 	public int validarEntrada(String txtNumeros) {
 		int numero = -1;
-		//System.out.println("texto: "+txtNumeros+"tamaño:"+txtNumeros.length());
 		if (txtNumeros.length() != 4) {
-			//JOptionPane.showMessageDialog(null, "Se requieren cuatro dígitos");
-			//txtNumeros.requestFocus();
 			numero = ERRORDIGITOS;//cuatro digitos
-			//System.out.println("error:"+numero);
 		} else {
 			try {
 				numero = Integer.parseInt(txtNumeros);
 			} catch (NumberFormatException e) {
-				//JOptionPane.showMessageDialog(null, "Entrada inválida");
-				//txtNumeros.requestFocus();
 				numero = ENTRADAINVALIDA;//entrada invalida
 			}
 
@@ -72,8 +63,6 @@ public class Juego {
 			if (digitos[this.adivina[i]] != -1)
 				digitos[this.adivina[i]] = -1;
 			else {
-				//JOptionPane.showMessageDialog(null,"Dígito Repetido");
-				//txtNumeros.requestFocus();
 				return false;
 			}
 		}
@@ -85,7 +74,6 @@ public class Juego {
 		int i,j;
 		this.picas = this.fijas = 0;
 		for(i = 0 ; i < 4 ; i++ ) {
-			//System.out.print("Adivina: "+this.adivina[i]);
 			if (this.adivina[i] == this.magico[i])
 				this.fijas++;
 		}
@@ -99,12 +87,11 @@ public class Juego {
 			adivino = true;
 		this.txpicas = this.picas+"";
 		this.txfijas = this.fijas+"";
-		//txpicas.setText(txpicas);
-		//txfijas.setText(txfijas);
-		//System.out.println("Picas:"+this.picas+"-- Fijas:"+this.fijas);
 		return adivino;
 	}
 
+	//getters y setters
+	
 	public int[] getAdivina() {
 		return adivina;
 	}
@@ -157,7 +144,5 @@ public class Juego {
 		String valor = String.valueOf(
 				this.magico[0]*1000+this.magico[1]*100+this.magico[2]*10+this.magico[3]);
 		return valor;
-		
 	}
-	
 }
