@@ -32,7 +32,7 @@ public class Juego {
 				this.magico[total] = numero;
 				digitos[numero] = -1;
 				total++;
-				//System.out.print(numero+" ");
+				System.out.print(numero+" ");
 			}
 			//System.out.println("magico:"+this.magico[total]);
 		}

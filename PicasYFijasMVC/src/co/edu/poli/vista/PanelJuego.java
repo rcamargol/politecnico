@@ -2,7 +2,7 @@ package co.edu.poli.vista;
 
 import javax.swing.JOptionPane;
 
-import co.edu.poli.modelo.Juego;
+import co.edu.poli.controlador.Main;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,18 +23,15 @@ public class PanelJuego {
 	private Label lblNumIntentos;
 	private Label lblPicas;
 	private Label lblFijas;
-	
-	private Juego juego;
+	private Button btnOK; 
 	
 	private String intentos;
 	private int numIntentos;
 	
-	public PanelJuego(Stage primaryStage) {
+	public PanelJuego(Stage primaryStage, Main controlador) {
 		this.numIntentos = 1;
 		try {
 			BorderPane root = new BorderPane();
-			juego = new Juego();
-			juego.generarMagico();
 			this.intentos = "Numero Intentos: " + numIntentos;
 			lblNumIntentos = new Label(intentos);
 			lblNumIntentos.setMinWidth(100);
@@ -63,11 +60,11 @@ public class PanelJuego {
 			txtFijas.setMaxWidth(200);
 			txtFijas.setEditable(false);
 			
-			txtNumeros.setPromptText("Escribe duatro digitos.");
-			Button btnOK = new Button("Jugar");
-			btnOK.setMinWidth(75);
-			btnOK.setOnAction(e -> btnOK_Click());
-
+			this.txtNumeros.setPromptText("Escribe duatro digitos.");
+			this.btnOK = new Button("Jugar");
+			this.btnOK.setMinWidth(75);
+			//btnOK.setOnAction(e -> btnOK_Click());
+			this.btnOK.setOnAction(controlador);
 			// asignación de objetos gráficos al grid
 			HBox paneIntentos = new HBox(10, lblNumIntentos);
 			paneIntentos.setPadding(new Insets(10));
@@ -80,7 +77,7 @@ public class PanelJuego {
 			HBox paneFijas = new HBox(10, lblFijas, txtFijas);
 			paneFijas.setPadding(new Insets(10));
 			
-			HBox paneButton = new HBox(20, btnOK);
+			HBox paneButton = new HBox(20, this.btnOK);
 			paneButton.setPadding(new Insets(10));
 			paneButton.setAlignment(Pos.BOTTOM_RIGHT);
 			VBox pane = new VBox(10, paneIntentos, paneCharacter,panePicas, paneFijas, paneButton);
@@ -94,40 +91,86 @@ public class PanelJuego {
 		}
 	}
 	
-	public void btnOK_Click() {
-		int numero = 0;
-		boolean adivino = false, norepetido = false;
-		String numtext = this.txtNumeros.getText();
-		numero = juego.validarEntrada(numtext);
-		norepetido = juego.validarRepetido(numero);
-		if (numero > 0  && norepetido) {
-			//JOptionPane.showMessageDialog(null, "Número correcto");
-			adivino = juego.adivinaste();
-			if (!adivino && this.numIntentos < juego.MAX_INTENTOS) {
-				this.txtPicas.setText(juego.getTxpicas());
-				this.txtFijas.setText(juego.getTxfijas());
-				this.numIntentos++;
-				this.intentos = "Numero Intentos: " + numIntentos;
-				this.lblNumIntentos.setText(this.intentos);
-				this.txtNumeros.setText(""); 
-			}
-			else {
-				if (adivino) {
-					JOptionPane.showMessageDialog(null, "¡GANASTE!");
-				}
-				else if (this.numIntentos == juego.MAX_INTENTOS)
-					JOptionPane.showMessageDialog(null, "¡PERDISTE!, el número es: "+juego.getMagicoTxt());
-			}
-		}
-		else {
-			//System.out.println("validación:"+numero);
-			if(numero == juego.ERRORDIGITOS)
-				JOptionPane.showMessageDialog(null, "Se requieren cuatro dígitos");
-			else if(numero == juego.ENTRADAINVALIDA)
-				JOptionPane.showMessageDialog(null, "Entrada inválida");
-			else if(!norepetido)
-				JOptionPane.showMessageDialog(null,"Hay Dígitos Repetidos");
-			txtNumeros.requestFocus();
-		}
+	// getters y setters
+	
+	public TextField getTxtNumeros() {
+		return txtNumeros;
 	}
+
+	public void setTxtNumeros(TextField txtNumeros) {
+		this.txtNumeros = txtNumeros;
+	}
+
+	public TextField getTxtPicas() {
+		return txtPicas;
+	}
+
+	public void setTxtPicas(TextField txtPicas) {
+		this.txtPicas = txtPicas;
+	}
+
+	public TextField getTxtFijas() {
+		return txtFijas;
+	}
+
+	public void setTxtFijas(TextField txtFijas) {
+		this.txtFijas = txtFijas;
+	}
+
+	public Label getLblNumeros() {
+		return lblNumeros;
+	}
+
+	public void setLblNumeros(Label lblNumeros) {
+		this.lblNumeros = lblNumeros;
+	}
+
+	public Label getLblNumIntentos() {
+		return lblNumIntentos;
+	}
+
+	public void setLblNumIntentos(Label lblNumIntentos) {
+		this.lblNumIntentos = lblNumIntentos;
+	}
+
+	public Label getLblPicas() {
+		return lblPicas;
+	}
+
+	public void setLblPicas(Label lblPicas) {
+		this.lblPicas = lblPicas;
+	}
+
+	public Label getLblFijas() {
+		return lblFijas;
+	}
+
+	public void setLblFijas(Label lblFijas) {
+		this.lblFijas = lblFijas;
+	}
+
+	public Button getBtnOK() {
+		return btnOK;
+	}
+
+	public void setBtnOK(Button btnOK) {
+		this.btnOK = btnOK;
+	}
+
+	public String getIntentos() {
+		return intentos;
+	}
+
+	public void setIntentos(String intentos) {
+		this.intentos = intentos;
+	}
+
+	public int getNumIntentos() {
+		return numIntentos;
+	}
+
+	public void setNumIntentos(int numIntentos) {
+		this.numIntentos = numIntentos;
+	}
+	
 }
