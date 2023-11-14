@@ -58,19 +58,19 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 			}
 			else {
 				if (adivino) {
-					JOptionPane.showMessageDialog(null, "¡GANASTE!");
+				 vista.mostrarMensaje("¡GANASTE!");
 				}
 				else if (vista.getPj().getNumIntentos() == juego.MAX_INTENTOS)
-					JOptionPane.showMessageDialog(null, "¡PERDISTE!, el número es: "+juego.getMagicoTxt());
+					vista.mostrarMensaje("¡PERDISTE!, el número es: "+juego.getMagicoTxt());
 			}
 		}
 		else {
 			if(numero == juego.ERRORDIGITOS)
-				JOptionPane.showMessageDialog(null, "Se requieren cuatro dígitos");
+				vista.mostrarMensaje("Se requieren cuatro dígitos");
 			else if(numero == juego.ENTRADAINVALIDA)
-				JOptionPane.showMessageDialog(null, "Entrada inválida");
+				vista.mostrarMensaje("Entrada inválida");
 			else if(!norepetido)
-				JOptionPane.showMessageDialog(null,"Hay Dígitos Repetidos");
+				vista.mostrarMensaje("Hay Dígitos Repetidos");
 			vista.getPj().getTxtNumeros().requestFocus();
 		}
 	}

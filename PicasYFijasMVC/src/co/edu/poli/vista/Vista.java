@@ -17,6 +17,10 @@ public class Vista{
 			//e.printStackTrace();
 		}
 	}
+	
+	public void mostrarMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(null, mensaje);
+	}
 
 	public PanelJuego getPj() {
 		return pj;
