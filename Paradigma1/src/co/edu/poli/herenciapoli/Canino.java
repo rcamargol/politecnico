@@ -13,6 +13,16 @@ public class Canino extends Mamifero{
 		System.out.println("Mis colmillos son:"+mostrarColmillos());
 	}
 	
+	public void crecer(String numColmillos) {
+		this.numColmillos = numColmillos;
+		this.numPatas = 4;
+	}
+	
+	public void crecer(String numColmillos, int numPatas) {
+		this.numColmillos = numColmillos;
+		this.numPatas = numPatas;		
+	}
+	
 	public String mostrarColmillos() {
 		return this.numColmillos;
 	}
