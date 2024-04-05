@@ -19,6 +19,8 @@ public class Contenedores {
 			System.out.print(numero+" ");
 		}
 		System.out.println("");
+		
+		
 		TreeSet<Integer> lista = new TreeSet<Integer>();
 		int num;
 		for (i = 0 ; i < 10 ; i++) {
