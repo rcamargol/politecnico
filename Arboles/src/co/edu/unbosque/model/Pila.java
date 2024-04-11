@@ -1,19 +1,16 @@
-package Pilas;
-import Listas.Lista;
+package co.edu.unbosque.model;
 
 public class Pila extends Lista{
 	
 	public void hacerPUSH(Object info) {
 		super.insertarNodoInicio(info);
 	}
-	
 	public void hacerPOP() {
-		super.removerNodo(super.cabeza.getVal());
+		super.removerNodo(super.cabeza.getInfo());
 	}
-	
 	public Object hacerPEEK() {
 		if(super.cabeza!=null) {
-			return(super.cabeza.getVal());
+			return(super.cabeza.getInfo());
 			//fin del metodo que esta complto
 		}
 		return null;

@@ -1,15 +1,16 @@
-package Listas;
+package co.edu.unbosque.model;
 
 public class NodoL {
-	private Object val;
+	//comentario para nodo del tipo de objeto
+	private Object info;
 	private NodoL siguiente;
 	 
-	public Object getVal() {
-		return val;
+	public Object getInfo() {
+		return info;
 	}
 	
-	public void setVal(Object info) {
-		this.val = info;
+	public void setInfo(Object info) {
+		this.info = info;
 	}
 	
 	public NodoL getSiguiente() {
