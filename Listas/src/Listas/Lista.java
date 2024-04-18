@@ -183,7 +183,6 @@ public class Lista {
 			}
 			System.out.println();
 	}
-	
 
 	// getters y setters
 	public NodoL getNodo() {
