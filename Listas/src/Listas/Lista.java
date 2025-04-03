@@ -121,7 +121,7 @@ public class Lista {
 		}
 	}
 	
-	public void insertarListaOrdenada(int val, int modo) {
+	public void insertarListaOrdenada(int val, int modo) {//no usar
 		NodoL p, q;
 		boolean comparacion1, comparacion2, encontro;
 		comparacion1 = comparacion2 = encontro = false;

@@ -1,6 +1,7 @@
 package Listas;
 
 public class NodoL {
+	
 	private Object val;
 	private NodoL siguiente;
 	 
